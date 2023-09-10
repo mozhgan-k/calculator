@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://kit.fontawesome.com/156fa60e15.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+  <title>Calculator</title>
+</head>
+
+<body>
+  <section class="calculator-container">
+    <div class="operation-container">
+      <textarea class="result-input" readonly id="result"></textarea>
+    </div>
+    <div class="keys-wrapper">
+      <div class="keys-container">
+        <button onclick="result.value = ''" id="clear-btn" class="keys bg-body text-danger font-bold">C</button>
+        <button onclick="backspace()" class="keys bg-body text-secondary backspace-btn">
+          
+        </button>
+        <button onclick="liveScreen('%')" class="keys bg-body text-secondary">%</button>
+        <button onclick="liveScreen('/')" class="keys bg-body text-secondary">÷</button>
+      </div>
+      <div class="keys-container">
+        <button onclick="liveScreen(7)" class="keys bg-body">7</button>
+        <button onclick="liveScreen(8)" class="keys bg-body">8</button>
+        <button onclick="liveScreen(9)" class="keys bg-body">9</button>
+        <button onclick="liveScreen('×')" class="keys bg-body text-secondary">×</button>
+      </div>
+      <div class="keys-container">
+        <button onclick="liveScreen(4)" class="keys bg-body">4</button>
+        <button onclick="liveScreen(5)" class="keys bg-body">5</button>
+        <button onclick="liveScreen(6)" class="keys bg-body">6</button>
+        <button onclick="liveScreen('-')" class="keys bg-body text-secondary">-</button>
+      </div>
+      <div class="keys-container">
+        <button onclick="liveScreen(1)" class="keys bg-body">1</button>
+        <button onclick="liveScreen(2)" class="keys bg-body">2</button>
+        <button onclick="liveScreen(3)" class="keys bg-body">3</button>
+        <button onclick="liveScreen('+')" class="keys bg-body text-secondary">+</button>
+      </div>
+      <div class="keys-container">
+        <button class="keys bg-body">+/-</button>
+        <button onclick="liveScreen(0)" class="keys bg-body">0</button>
+        <button class="keys bg-body">.</button>
+        <button onclick="calculate(res.value)" class="keys bg-secondary">=</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
