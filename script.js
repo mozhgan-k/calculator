@@ -1,17 +1,21 @@
-const res = document.getElementById('result')
+const res = document.getElementById("result")
+const list = document.getElementById("keys-list")
 
-function liveScreen(value) {
-  if (!res.value) {
-    res.value = ""
-  }
-  // if(value === '×' || value === '%' || value === '+' || value === '-') {
-  //   res.value = 'Enter a number'
-  //   setTimeout(() => {
-  //     res.value = ""
-  //   }, 1300);
-  // } else {
-  res.value += value
-  // }
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+const operators = ["×", "-", "+", "+/-", "="]
+
+for (const number of numbers) {
+  let li = document.createElement("li")
+  let button = document.createElement("button")
+  button.classList.add("keys", "bg-body")
+  button.innerText = number
+  button.addEventListener("click", function liveScreen() {
+    if(typeof res.value !== NaN) {
+      res.value += number
+    }
+  })
+  li.appendChild(button)
+  list.appendChild(li)
 }
 
 function calculate(value) {
@@ -60,6 +64,8 @@ function keyboardEventHandler(e) {
     console.log(res.value)
     console.log(e.key)
     res.value += "9";
+  } else {
+    return
   }
 
   if (e.key === "*") {
@@ -70,17 +76,25 @@ function keyboardEventHandler(e) {
     res.value += "+";
   } else if (e.key === "/") {
     res.value += "/";
+  } else {
+    return
   }
 
   if(e.key === ".") {
     res.value += ".";
+  } else {
+    return
   }
 
   if(e.key === "Enter") {
     calculate(res.value);
+  } else {
+    return
   }
 
   if(e.key === "Backspace") {
     backspace();
+  } else {
+    return
   }
 }
