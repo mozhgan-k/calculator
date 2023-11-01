@@ -18,13 +18,43 @@
       <textarea class="result-input" readonly id="result"></textarea>
     </div>
     <div class="keys-wrapper">
-      <div class="keys-container four-columns">
+      <div class="key-list col-4">
         <button onclick="result.value = ''" id="clear-btn" class="keys bg-body text-danger font-bold">C</button>
+        <button onclick="liveScreen('openParen')" class="keys bg-body text-secondary">(</button>
+        <button onclick="liveScreen('closeParen')" class="keys bg-body text-secondary">)</button>
         <button onclick="backspace()" class="keys bg-body text-secondary backspace-btn"></button>
-        <button onclick="liveScreen('%')" class="keys bg-body text-secondary">%</button>
-        <button onclick="liveScreen('÷')" class="keys bg-body text-secondary">÷</button>
       </div>
-      <ul class="keys-container three-columns" id="keys-list"></ul>
+      <div class="keys-container">
+        <div>
+          <ul class="key-list col-3" id="keys-list"></ul>
+          <ul class="key-list col-3">
+            <li>
+              <button onclick="liveScreen('.')" class="keys bg-body text-secondary">.</button>
+            </li>
+            <li>
+              <button onclick="liveScreen('0')" class="keys bg-body">0</button>
+            </li>
+            <li>
+              <button onclick="calculate(result.value)" class="keys bg-body text-secondary">=</button>
+            </li>
+          </ul>
+        </div>
+        <ul class="key-list col-1" style="margin-left: 1rem">
+          <li>
+            <button onclick="liveScreen('÷')" class="keys bg-body text-secondary">÷</button>
+          </li>
+          <li>
+            <button onclick="liveScreen('*')" class="keys bg-body text-secondary">×</button>
+          </li>
+          <li>
+            <button onclick="liveScreen('-')" class="keys bg-body text-secondary">-</button>
+          </li>
+          <li>
+            <button onclick="liveScreen('+')" class="keys bg-body text-secondary">+</button>
+          </li>
+        </ul>
+      </div>
+      
     </div>
   </section>
 
