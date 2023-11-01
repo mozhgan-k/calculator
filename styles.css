@@ -9,8 +9,6 @@
 :root {
   --primary: rgba(74, 28, 66, 0.28);
   --secondary: #5DBE7C;
-  --danger: #F8050D;
-  --success: #109204;
   --body: #212121;
   --text-color: #fff;
   --md-font: 30px;
@@ -24,12 +22,8 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-ul{
+ul {
   list-style: none;
-}
-
-.text-danger {
-  color: var(--danger);
 }
 
 .text-secondary {
@@ -61,13 +55,6 @@ button {
   -webkit-backdrop-filter: blur(7.3px);
   border: 1px solid rgba(93, 190, 124, 0.07);
 }
-/* button:focus {
-  background: rgba(93, 190, 124, 0.19);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.3px);
-  -webkit-backdrop-filter: blur(7.3px);
-  border: 1px solid rgba(93, 190, 124, 0.07);
-} */
 
 textarea {
   width: 100%;
@@ -80,11 +67,9 @@ textarea {
   resize: none;
 }
 
-
 .calculator-container {
-  max-width: 380px;
+  max-width: 355px;
   width: 100%;
-  /* height: 700px; */
   margin: 20px auto 20px auto;
   border-radius: 25px;
   background: rgba(93, 190, 124, 0.21);
@@ -96,11 +81,10 @@ textarea {
 
 .operation-container {
   display: flex;
-  /* align-items: flex-end; */
   justify-content: flex-end;
   padding: 20px;
-  width: 350px;
-  height: 250px;
+  width: 313px;
+  height: 145;
   background-color: var(--body);
   margin: 20px auto 20px auto;
   border-radius: 30px;
@@ -115,31 +99,44 @@ textarea {
 }
 
 .keys-wrapper {
-  padding: 20px;
+  padding: 10px 20px;
 }
 
-.four-columns{
-  grid-template-columns: repeat(4, 80px);
+.col-1 {
+  grid-template-columns: repeat(1, 70px);
 }
 
-.three-columns{
-  grid-template-columns: repeat(3, 80px);
+.col-3 {
+  grid-template-columns: repeat(3, 70px);
+}
+
+.col-4 {
+  grid-template-columns: repeat(4, 70px);
 }
 
 .keys-container {
   display: grid;
-  
+  align-items: center;
+  justify-content: center;
+  grid-gap: .5rem;
+  margin-bottom: .5rem;
+  grid-template-columns: 210px 70px;
+}
+
+.key-list {
+  display: grid;
   align-items: center;
   justify-content: center;
   grid-gap: .5rem;
   margin-bottom: .5rem;
 }
 
-.backspace-btn{
+.backspace-btn {
   background-image: url('./assets/backspace-svgrepo-com.svg');
   background-position: center;
   background-repeat: no-repeat;
 }
+
 .backspace-btn:hover {
   background: rgba(93, 190, 124, 0.19);
   background-image: url('./assets/backspace-svgrepo-com.svg');
@@ -150,9 +147,10 @@ textarea {
   -webkit-backdrop-filter: blur(7.3px);
   border: 1px solid rgba(93, 190, 124, 0.07);
 }
+
 .keys {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   cursor: pointer;
   border-radius: var(--rounded);
   display: flex;
