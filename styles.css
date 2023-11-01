@@ -20,6 +20,10 @@ body {
   background-color: var(--body);
   color: var(--text-color);
   font-family: 'Open Sans', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 ul {
