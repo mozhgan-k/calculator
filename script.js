@@ -1,38 +1,50 @@
 const res = document.getElementById("result")
 const list = document.getElementById("keys-list")
 
-const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-const operators = ["×", "-", "+", "+/-", "="]
+const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const operators = ["/", "+", "=", "-", "(", ")", ".", "*"];
+
+
+function calculate(value) {
+  const calculatedValue = eval(value || null);
+  if (isNaN(calculatedValue)) {
+    res.value = "Err";
+    setTimeout(() => {
+      res.value = "";
+    }, 1300);
+  } else {
+    res.value = calculatedValue;
+  }
+}
+
+function liveScreen(value) {
+  let newValue = ""
+  if (value === "openParen") {
+    newValue = "("
+  } else if (value === "closeParen") {
+    newValue = ")"
+  } else {
+    newValue = value
+  }
+  if (typeof newValue !== NaN) {
+    res.value += newValue
+  }
+}
 
 for (const number of numbers) {
   let li = document.createElement("li")
   let button = document.createElement("button")
   button.classList.add("keys", "bg-body")
+
   button.innerText = number
   button.addEventListener("click", function liveScreen() {
     if (typeof res.value !== NaN) {
       res.value += number
     }
   })
+
   li.appendChild(button)
   list.appendChild(li)
-}
-
-function liveScreen(value) {
-  if (typeof res.value !== NaN) {
-    res.value += value
-  }
-}
-
-function calculate(value) {
-  if (isNaN(value)) {
-    res.value = "Can not divide 0 with 0"
-    setTimeout(() => {
-      res.value = "";
-    }, 1300);
-  } else {
-    res.value = value
-  }
 }
 
 function backspace() {
@@ -45,7 +57,6 @@ function backspace() {
 document.addEventListener("keydown", keyboardEventHandler)
 
 function keyboardEventHandler(e) {
-  console.log(e)
   e.preventDefault();
 
   for (const num of numbers) {
@@ -56,28 +67,31 @@ function keyboardEventHandler(e) {
 
   for (const sym of operators) {
     if (e.key === sym) {
-      if (sym === "×") {
-        sym = "*"
+      if (e.key === "=") {
+        const calculatedValue = eval(res.value || null);
+        if (isNaN(calculatedValue)) {
+          res.value = "Err";
+          setTimeout(() => {
+            res.value = "";
+          }, 1300);
+        } else {
+          res.value = calculatedValue;
+        }
+      } else {
+        res.value += sym
       }
-      res.value += sym
     }
   }
 
-
-  if (e.key === ".") {
-    res.value += ".";
-  } else {
-    return
-  }
-
   if (e.key === "Enter") {
-    if (isNaN(res.value)) {
-      res.value = "Can not divide 0 with 0"
+    const calculatedValue = eval(res.value || null);
+    if (isNaN(calculatedValue)) {
+      res.value = "Err";
       setTimeout(() => {
         res.value = "";
       }, 1300);
     } else {
-      return res.value
+      res.value = calculatedValue;
     }
   }
 
@@ -87,3 +101,4 @@ function keyboardEventHandler(e) {
     res.value = result.substring(0, res.value.length - 1)
   }
 }
+
